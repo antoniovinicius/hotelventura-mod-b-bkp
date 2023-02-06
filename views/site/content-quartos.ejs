@@ -1,0 +1,35 @@
+<div class="gtco-section">
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                <h2 class="cursive-font primary-color">Quartos</h2>
+                <p>Horário de Check-in: 14h. Horário de Check-out: 12h.</p>
+            </div>
+        </div>
+        <div class="row">
+
+            <% quartos.forEach(function(quarto){ %>
+            <div class="card card-price">
+                <div class="card-img">
+                    <img src="<%=quarto.foto%>" class="img-responsive">
+                    <div class="card-caption">
+                        <span class="h2"><%=quarto.nome_quarto%></span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="price">R$ <span class="price cursive-font"><%= Intl.NumberFormat('pt-br', {style: 'currency' ,
+                        currency: 'BRL' }).format(quarto.tarifa) %></span></div>
+                    <ul class="details">
+                    <p>
+                        <%=quarto.descricao%>
+                    </p>
+                    </ul>
+                </div>
+            </div>
+            <% }); %>
+
+        </div>
+
+
+    </div>
+</div>

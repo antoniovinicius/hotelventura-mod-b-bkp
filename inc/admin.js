@@ -211,15 +211,12 @@ module.exports = (io) => {
                             render(err);
                         } else {
                             var aux_tarifa = rows[0].tarifa;
-                            console.log(aux_tarifa);
                             var vlr_tot_reserva = diffdatas*rows[0].tarifa;
-                            console.log(vlr_tot_reserva);
                         }
 
                         let query, params;
 
                         if (parseInt(fields.id_reserva) > 0) {
-                            console.log("Entrei aqui");
 
                             query = `
                                     UPDATE tb_reservas
@@ -233,11 +230,11 @@ module.exports = (io) => {
                                 fields.data_inicio,
                                 fields.data_fim,
                                 parseInt(fields.fk_id_quarto),
-                                fields.id_reserva,
+                                
                                 diffdatas,
-                                vlr_tot_reserva
+                                vlr_tot_reserva,
+                                parseInt(fields.id_reserva)
                             ];
-
 
                         } else {
 
@@ -259,10 +256,7 @@ module.exports = (io) => {
 
                         }
 
-                        console.log(query);
-                        console.log(params);
                         conn.query(query, params, (err, results) => {
-                            console.log("Entrei aqui 2 dois 2");
                             if (err) {
                                 f(err);
                             } else {

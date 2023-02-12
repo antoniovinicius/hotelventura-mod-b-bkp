@@ -13,6 +13,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var http = http.Server(app);
 var io = socket(http);
+require('dotenv').config()
 
 global.io = io;
 
@@ -21,8 +22,7 @@ var adminRouter = require('./routes/adminRoute')(io);
 
 const RedisStore = connectRedis(session)
 const redisClient = redis.createClient({
-  host: 'localhost',
-  port: 6379,
+  url: process.env.CACHE_HOST,
   legacyMode: true
 });
 

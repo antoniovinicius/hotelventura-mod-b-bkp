@@ -16,7 +16,7 @@ services:
     networks:
       - hotel
   app:
-    image: renanlagee/hotelventura:homol
+    build: ./
     container_name: hotel_ventura_app
     ports:
       - 3000:3000
